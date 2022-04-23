@@ -14,7 +14,7 @@
     </svg>
     <nav class="site-header__nav">
         <a href="/home.html">Личный кабинет</a>
-        <a href="/create-post.html">Создать пост</a>
+        <a href="{{ route('post.create') }}">Создать пост</a>
         <a href="/logout">Выйти</a>
     </nav>
 </header>
