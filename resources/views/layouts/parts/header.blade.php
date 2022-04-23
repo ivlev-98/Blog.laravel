@@ -1,5 +1,5 @@
 <header class="site-header">
-    <div class="site-header__wrap"><a class="site-header__logo" href="/">
+    <div class="site-header__wrap"><a class="site-header__logo" href="{{ route('index') }}">
         <h1>Blog.template</h1></a>
         <form action="/search">
             <input name="search" placeholder="Поиск" type="text">

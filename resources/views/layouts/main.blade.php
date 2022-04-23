@@ -18,8 +18,8 @@
             <div class="container">
                 <div class="wrap">
                     @yield('content')
-                    @include('layouts.parts.nav')
                 </div>
+                @include('layouts.parts.nav')
             </div>
             @include('layouts.parts.footer')
         </div>
