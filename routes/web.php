@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +16,6 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('index');
+Route::get('/', IndexController::class)->name('index');
+Route::get('/category/{category}', CategoryController::class)->name('category.show');
+Route::resource('/post', PostController::class);
