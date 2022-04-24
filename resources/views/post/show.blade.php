@@ -33,4 +33,9 @@
 
 @section('nav')
     <a href="{{ route('post.edit', ['post' => $post]) }}">Редактировать</a>
+    <form method="POST" action="{{ route('post.destroy', [$post]) }}">
+        @csrf
+        @method("delete")
+        <button>Удалить</button>
+    </form>
 @endsection
