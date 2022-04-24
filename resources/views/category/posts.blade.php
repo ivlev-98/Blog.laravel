@@ -39,10 +39,5 @@
 
 @endsection
 @section('nav')
-    @foreach ($categories as $category)
-        <a
-            {{ Route::current()->parameters['category']->id === $category->id ? "class=selected" : ""}}
-            href="{{ route('category.show', ['category' => $category->id]) }}"
-        >{{ $category->title }}</a>
-    @endforeach
+    <x-menu.categories></x-menu.categories>
 @endsection

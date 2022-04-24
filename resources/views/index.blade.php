@@ -38,7 +38,5 @@
     {{ $posts->links('layouts.parts.pagination') }}
 @endsection
 @section('nav')
-    @foreach ($categories as $category)
-        <a href="{{ route('category.show', ['category' => $category->id]) }}">{{ $category->title }}</a>
-    @endforeach
+    <x-menu.categories></x-menu.categories>
 @endsection
