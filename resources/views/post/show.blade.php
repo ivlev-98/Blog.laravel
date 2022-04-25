@@ -7,7 +7,7 @@
     <article class="post">
         <span>
             <h3>{{ $post->title }}</h3>
-            <img src="/assets/img/post1.3323b21fbac070bf0e33.webp" loading="lazy" alt="image">
+            <img src="{{ asset($post->img) }}" loading="lazy" alt="image">
             <p>{{ $post->content }}</p>
         </span>
         <div class="post__controls">

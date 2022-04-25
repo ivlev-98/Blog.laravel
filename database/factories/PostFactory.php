@@ -26,7 +26,7 @@ class PostFactory extends Factory
             'user_id' => rand(1, 10),
             'content' => $content,
             'short_content' => Str::length($content) > 300 ? substr($content, 0, 300).'...' : $content,
-            'img' => $this->faker->image()
+            'img' => 'assets/img/post1.3323b21fbac070bf0e33.webp'
         ];
     }
 }

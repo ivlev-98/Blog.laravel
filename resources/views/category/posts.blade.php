@@ -10,7 +10,7 @@
             <article class="post">
                 <a href="{{ route('post.show', ['post' => $post]) }}">
                     <h3>{{ $post->short_title }}</h3>
-                    <img src="/assets/img/post1.3323b21fbac070bf0e33.webp" loading="lazy" alt="image">
+                    <img src="{{ asset($post->img) }}" loading="lazy" alt="image">
                     <p>{{ $post->short_content }}</p>
                 </a>
                 <div class="post__controls">
