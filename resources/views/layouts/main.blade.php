@@ -15,26 +15,13 @@
         <div id="site-overlay2"></div>
         <div class="wrapper">
             @include('layouts.parts.header')
-
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <article class="alert alert-danger">
-                        {{ $error }}
-                    </article>
-                @endforeach
-            @endif
-            @if (session('success'))
-                <article class="alert alert-success">
-                    {{ session('success') }}
-                </article>
-            @endif
-
             <div class="container">
                 <div class="wrap">
                     @yield('content')
                 </div>
                 @include('layouts.parts.nav')
             </div>
+            <x-alerts></x-alerts>
             @include('layouts.parts.footer')
         </div>
     </body>
