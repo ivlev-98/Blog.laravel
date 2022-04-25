@@ -5,11 +5,11 @@
 ])
 @section('content')
     <article class="post">
-        <a>
+        <span>
             <h3>{{ $post->title }}</h3>
             <img src="/assets/img/post1.3323b21fbac070bf0e33.webp" loading="lazy" alt="image">
             <p>{{ $post->content }}</p>
-        </a>
+        </span>
         <div class="post__controls">
             <div>
                 <span class="action selected">

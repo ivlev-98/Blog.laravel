@@ -102,7 +102,18 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__webpack_require__(/*! ./stylus/all.styl */ \"./src/stylus/all.styl\");\nconst navToggler_1 = __webpack_require__(/*! ./ts/navToggler */ \"./src/ts/navToggler.ts\");\nconst imgPreview_1 = __webpack_require__(/*! ./ts/imgPreview */ \"./src/ts/imgPreview.ts\");\nconst headerNav = new navToggler_1.navToggler({\n    'triggers': ['.site-header__controls'],\n    'toggleItems': ['.site-header__nav', '#site-overlay'],\n    'activeClass': 'active'\n});\nheaderNav.watch();\nconst rightNav = new navToggler_1.navToggler({\n    'triggers': ['#menuTrigger'],\n    'toggleItems': ['#site-overlay2', '.container', '.site-header'],\n    'activeClass': 'active'\n});\nrightNav.watch();\nif (document.querySelector(\"#imgLabel > .img\")) {\n    const imgPreview = new imgPreview_1.ImgPreview(\"#img\", \"#imgLabel > .img\");\n    imgPreview.watch(\"#imgLabel > svg\");\n}\n\n\n//# sourceURL=webpack://webpack/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__webpack_require__(/*! ./stylus/all.styl */ \"./src/stylus/all.styl\");\nconst navToggler_1 = __webpack_require__(/*! ./ts/navToggler */ \"./src/ts/navToggler.ts\");\nconst imgPreview_1 = __webpack_require__(/*! ./ts/imgPreview */ \"./src/ts/imgPreview.ts\");\nconst alertClose_1 = __webpack_require__(/*! ./ts/alertClose */ \"./src/ts/alertClose.ts\");\nconst headerNav = new navToggler_1.navToggler({\n    'triggers': ['.site-header__controls'],\n    'toggleItems': ['.site-header__nav', '#site-overlay'],\n    'activeClass': 'active'\n});\nheaderNav.watch();\nconst rightNav = new navToggler_1.navToggler({\n    'triggers': ['#menuTrigger'],\n    'toggleItems': ['#site-overlay2', '.container', '.site-header'],\n    'activeClass': 'active'\n});\nrightNav.watch();\nif (document.querySelector(\"#imgLabel > .img\")) {\n    const imgPreview = new imgPreview_1.ImgPreview(\"#img\", \"#imgLabel > .img\");\n    imgPreview.watch(\"#imgLabel > svg\");\n}\nconst alertClose = new alertClose_1.AlertClose('.alert > span');\nif (document.querySelector('.alert')) {\n    alertClose.watch();\n}\n\n\n//# sourceURL=webpack://webpack/./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/ts/alertClose.ts":
+/*!******************************!*\
+  !*** ./src/ts/alertClose.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.AlertClose = void 0;\nclass AlertClose {\n    constructor(trigger) {\n        this.triggers = document.querySelectorAll(trigger);\n    }\n    close(trigger) {\n        trigger.closest('.alert').remove();\n    }\n    watch() {\n        this.triggers.forEach((trigger) => {\n            trigger.addEventListener('click', () => {\n                this.close(trigger);\n                console.log('c');\n            });\n        });\n    }\n}\nexports.AlertClose = AlertClose;\n\n\n//# sourceURL=webpack://webpack/./src/ts/alertClose.ts?");
 
 /***/ }),
 

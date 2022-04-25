@@ -7,8 +7,8 @@
         <meta name="author" content="Александр Ивлев (Alex Ivlev)">
         <meta name="keywords" content="Блог, Blog, Blog.laravel, {{ $metaKeywords }}">
         <meta name="description" content="Блог на laravel. {{ $metaDescription }}">
-        <script defer="defer" src="{{ asset('/js/app.a896650afb760a5b297e.js') }}"></script>
-        <link href="{{ asset('/css/app.a5c33a71fc7309eecf49.css') }}" rel="stylesheet">
+        <script defer="defer" src="{{ asset('/js/app.2ac5f77bd142912a7d39.js') }}"></script>
+        <link href="{{ asset('/css/app.b69c82a0d0de851b2df1.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="site-overlay"></div>

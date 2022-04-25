@@ -233,6 +233,85 @@ a {
 .wrap {
   width: 100%;
 }
+.alerts {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.5s;
+  width: 270px;
+  height: 50px;
+  padding-left: 30px;
+  background: #fff;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-animation: jump 0.2s 3 ease-in 1s;
+          animation: jump 0.2s 3 ease-in 1s;
+  font-size: 16px;
+  box-shadow: 0 0 10px 2px #abafa2;
+}
+.alert.danger:before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  left: 0;
+  height: 50px;
+  background: #da504b;
+}
+.alert.success:before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  left: 0;
+  height: 50px;
+  background: #15a070;
+}
+.alert span {
+  height: 50px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.alert span:hover {
+  background: #ead7c7;
+}
+.alert svg {
+  transform: rotate(45deg);
+}
+@-webkit-keyframes jump {
+  0% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes jump {
+  0% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .site-header {
   display: flex;
   align-items: center;
@@ -373,7 +452,14 @@ a {
   height: -moz-min-content;
   height: min-content;
 }
-.right-nav a {
+.right-nav button {
+  background: #fff;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+.right-nav a,
+.right-nav button {
   height: 45px;
   display: flex;
   align-items: center;
@@ -382,10 +468,12 @@ a {
   font-size: 14px;
   transition: 0.5s;
 }
-.right-nav a:hover {
+.right-nav a:hover,
+.right-nav button:hover {
   background: #efefef;
 }
-.right-nav a.selected {
+.right-nav a.selected,
+.right-nav button.selected {
   background: #efefef;
   color: #404040;
   border-left: 3px solid #157575;
@@ -420,7 +508,8 @@ a {
   border-radius: 5px;
   margin-bottom: 20px;
 }
-.post a {
+.post a,
+.post span {
   padding: 10px 20px;
 }
 .post img {
@@ -896,6 +985,14 @@ a {
     opacity: 0.6;
     visibility: visible;
   }
+  .alerts {
+    width: 100%;
+    right: 0;
+    align-items: center;
+  }
+  .alert {
+    width: 60%;
+  }
   .site-header.active {
     right: 252px;
   }
@@ -939,13 +1036,17 @@ a {
   .container {
     margin: 30px 0;
   }
+  .alert {
+    width: 85%;
+  }
   .site-header input[type=text] {
     display: none;
   }
   .right-nav {
     right: -250px;
   }
-  .post a {
+  .post a,
+  .post span {
     padding: 5px 10px;
   }
   .post__controls {
