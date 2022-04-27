@@ -8,7 +8,7 @@
         <span>
             <h3>{{ $post->title }}</h3>
             <img src="{{ asset($post->img) }}" loading="lazy" alt="image">
-            <p>{{ $post->content }}</p>
+            <p>{!! Str::markdown($post->content, ['html_input' => 'strip']) !!}</p>
         </span>
         <div class="post__controls">
             <div>

@@ -21,11 +21,11 @@ class PostFactory extends Factory
         $content = $this->faker->realText(rand(200, 1024));
         return [
             'title' => $title,
-            'short_title' => Str::length($title) > 30 ? substr($title, 0, 30).'...' : $title,
+            'short_title' => Str::limit($title, 30, '...'),
             'category_id' => rand(1, 10),
             'user_id' => rand(1, 10),
             'content' => $content,
-            'short_content' => Str::length($content) > 300 ? substr($content, 0, 300).'...' : $content,
+            'short_content' => Str::limit($content, 300, '...'),
             'img' => 'assets/img/post1.3323b21fbac070bf0e33.webp'
         ];
     }

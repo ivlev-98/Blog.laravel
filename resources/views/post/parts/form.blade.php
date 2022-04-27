@@ -1,3 +1,24 @@
+<script src="{{ asset('js/ckeditor.js') }}"></script>
+<style>
+.ck.ck-toolbar {
+    margin-top: 15px;
+}
+.ck.ck-toolbar, .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border: 1px solid #EAD7C7;
+}
+.ck.ck-editor__main>.ck-editor__editable {
+    height: 300px;
+    margin-bottom: 15px;
+}
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+</style>
 <label for="title">Название:</label>
 <input type="text" id="title" name="title" placeholder="Заголовок" value="{{ old('title') ?? $post->title ?? '' }}">
 <label for="img" id="imgLabel">
@@ -40,3 +61,10 @@
     @endforeach
 </select>
 <input type="submit" value="Сохранить">
+<script>
+    ClassicEditor
+        .create( document.querySelector( 'textarea#content' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
