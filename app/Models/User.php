@@ -45,4 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'gender' => Gender::class
     ];
+
+    public function isAdmin()
+    {
+        return $this->role === '1';
+    }
+
 }

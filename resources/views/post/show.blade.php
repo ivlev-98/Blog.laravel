@@ -32,10 +32,14 @@
 @endsection
 
 @section('nav')
-    <a href="{{ route('post.edit', ['post' => $post]) }}">Редактировать</a>
-    <form method="POST" action="{{ route('post.destroy', [$post]) }}">
-        @csrf
-        @method("delete")
-        <button>Удалить</button>
-    </form>
+    @can('update', $post)
+        <a href="{{ route('post.edit', ['post' => $post]) }}">Редактировать</a>
+    @endcan
+    @can('delete', $post)
+        <form method="POST" action="{{ route('post.destroy', [$post]) }}">
+            @csrf
+            @method('delete')
+            <button>Удалить</button>
+        </form>
+    @endcan
 @endsection

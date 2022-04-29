@@ -13,12 +13,14 @@ class PostController extends Controller
 {
     public function create(Category $category)
     {
+        $this->authorize('create', new Post);
         $categories = $category->all();
         return view('post.create', compact('categories'));
     }
 
     public function store(Post $post, Request $request, PostStoreAction $action)
     {
+        $this->authorize('create', $post);
         $action->handle($post, $request);
         return to_route('post.show', [$post->id])
             ->with('success', 'Пост успешно создан');
@@ -31,12 +33,14 @@ class PostController extends Controller
 
     public function edit(Post $post, Category $category)
     {
+        $this->authorize('update', $post);
         $categories = $category->all();
         return view('post.edit', compact('post', 'categories'));
     }
 
     public function update(Post $post, Request $request, PostUpdateAction $action)
     {
+        $this->authorize('update', $post);
         $action->handle($post, $request);
         return to_route('post.show', [$post->id])
             ->with('success', 'Пост успешно отредактирован');
@@ -44,6 +48,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         Storage::delete($post->img);
         $post->delete();
         return to_route('category.show', [$post->category_id])

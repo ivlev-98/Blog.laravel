@@ -11,7 +11,7 @@ class PostUpdateAction
     {
         $post->title = $request->title;
         $post->short_title = Str::limit($request->title, 30, '...');
-        $post->user_id = 1;
+        $post->user_id = $post->user_id;
         $post->category_id = $request->category;
         $post->content = $request->content;
         $post->short_content = $request->short_content;
