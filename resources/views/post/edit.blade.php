@@ -10,7 +10,3 @@
     @include('post.parts.form')
 </form>
 @endsection
-
-@section('nav')
-    <x-menu.categories></x-menu.categories>
-@endsection

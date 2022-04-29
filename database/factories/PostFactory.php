@@ -26,7 +26,7 @@ class PostFactory extends Factory
             'user_id' => rand(1, 10),
             'content' => $content,
             'short_content' => Str::limit($content, 300, '...'),
-            'img' => 'assets/img/post1.3323b21fbac070bf0e33.webp'
+            'img' => str_replace('public', '', $this->faker->image('public/images'))
         ];
     }
 }

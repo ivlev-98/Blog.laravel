@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -12,8 +13,9 @@ class HomeController extends Controller
         $this->middleware('auth')->except('show');
     }
 
-    public function index()
-    {
-        return view('home.index');
+    public function index(User $user)
+    {   
+        $user = $user->withCount('posts')->withCount('comments')->find(Auth::user()->id);
+        return view('home.index', compact('user'));
     }
 }
