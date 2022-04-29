@@ -28,7 +28,3 @@
         <input type="submit" value="Войти">
     </form>
 @endsection
-
-@section('nav')
-    <x-menu.categories></x-menu.categories>
-@endsection

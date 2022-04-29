@@ -58,7 +58,3 @@
         <input type="submit" value="Регистрация">
     </form>
 @endsection
-
-@section('nav')
-    <x-menu.categories></x-menu.categories>
-@endsection

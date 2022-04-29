@@ -468,6 +468,9 @@ a {
   height: -moz-min-content;
   height: min-content;
 }
+.right-nav.empty {
+  display: none;
+}
 .right-nav button {
   background: #fff;
   width: 100%;
@@ -1102,6 +1105,9 @@ a {
     display: none;
   }
   #menuTrigger {
+    display: flex;
+  }
+  .right-nav.empty {
     display: flex;
   }
   .right-nav {

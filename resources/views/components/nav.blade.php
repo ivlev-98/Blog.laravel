@@ -1,4 +1,4 @@
-<nav class="right-nav">
+<nav class="right-nav @if(!strlen($slot)) empty @endif">
     @auth
         <header class="right-nav__header">
             @if(Auth::user()->img)
@@ -15,14 +15,18 @@
                 @csrf
                 <button>Выйти</button>
             </form>
-            <hr>
+            @if(strlen($slot))
+                <hr>
+            @endif
         </div>
     @endauth
     @guest
         <div class="right-nav__mobile-links">
             <a href="{{ route('login') }}">Авторизация</a>
             <a href="{{ route('register') }}">Регистрация</a>
-            <hr>
+            @if(strlen($slot))
+                <hr>
+            @endif
         </div>
     @endguest
     {{ $slot }}

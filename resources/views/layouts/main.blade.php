@@ -8,7 +8,7 @@
         <meta name="keywords" content="Блог, Blog, Blog.laravel, {{ $metaKeywords }}">
         <meta name="description" content="Блог на laravel. {{ $metaDescription }}">
         <script defer="defer" src="{{ asset('/js/app.2ac5f77bd142912a7d39.js') }}"></script>
-        <link href="{{ asset('/css/app.7aa6a0d8aa52781c4658.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/app.9afee54f112770e6b635.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="site-overlay"></div>
