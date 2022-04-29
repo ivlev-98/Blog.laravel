@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -19,3 +20,4 @@ use App\Http\Controllers\PostController;
 Route::get('/', IndexController::class)->name('index');
 Route::get('/category/{category}', CategoryController::class)->name('category.show');
 Route::resource('/post', PostController::class);
+Route::resource('/home', HomeController::class);

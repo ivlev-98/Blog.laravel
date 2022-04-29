@@ -9,7 +9,7 @@
             <span>{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
         </header>
         <div class="right-nav__mobile-links">
-            <a href="/home.html">Личный кабинет</a>
+            <a href="{{ route('home.index') }}">Личный кабинет</a>
             <a href="create-post.html">Создать пост</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

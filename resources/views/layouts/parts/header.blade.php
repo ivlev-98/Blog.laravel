@@ -21,7 +21,7 @@
     </svg>
     <nav class="site-header__nav">
         @auth
-            <a href="/home.html">Личный кабинет</a>
+            <a href="{{ route('home.index') }}">Личный кабинет</a>
             <a href="{{ route('post.create') }}">Создать пост</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

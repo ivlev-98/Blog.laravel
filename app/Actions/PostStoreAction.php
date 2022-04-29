@@ -13,7 +13,7 @@ class PostStoreAction
         $post->user_id = 1;
         $post->category_id = $request->category;
         $post->content = $request->content;
-        $post->short_content = Str::limit($request->content, 300, '...');
+        $post->short_content = $request->short_content;
         $post->img = $request->img->store('images');
         $post->save();
     }
