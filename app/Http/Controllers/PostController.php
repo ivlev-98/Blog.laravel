@@ -29,6 +29,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post = $post::withCount('comments')->find($post->id);
+        $post->comments = $post->comments()->paginate(10);
         return view('post.show', compact('post'));
     }
 
