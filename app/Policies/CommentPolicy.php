@@ -10,6 +10,12 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if ($user->isAdmin())
+            return true;
+    }
+
     public function create(User $user)
     {
         return $user->id > 0;
@@ -17,6 +23,11 @@ class CommentPolicy
 
     public function delete(User $user, Comment $comment)
     {
-        return $comment->user_id === $user->id || $user->isAdmin();
+        return $comment->user_id === $user->id;
+    }
+
+    public function like(User $user)
+    {
+        return $user->id > 0;
     }
 }

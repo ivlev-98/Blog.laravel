@@ -10,6 +10,12 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if ($user->isAdmin())
+            return true;
+    }
+
     public function create(User $user)
     {
         return $user->id > 0;
@@ -17,11 +23,16 @@ class PostPolicy
 
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->user_id || $user->isAdmin();
+        return $user->id === $post->user_id;
     }
 
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->user_id || $user->isAdmin();
+        return $user->id === $post->user_id;
+    }
+
+    public function like(User $user)
+    {
+        return $user->id > 0;
     }
 }
