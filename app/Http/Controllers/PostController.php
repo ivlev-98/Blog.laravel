@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Actions\PostStoreAction;
 use App\Actions\PostUpdateAction;
-use Illuminate\Http\Request;
+use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,7 @@ class PostController extends Controller
         return view('post.create', compact('categories'));
     }
 
-    public function store(Post $post, Request $request, PostStoreAction $action)
+    public function store(Post $post, StoreRequest $request, PostStoreAction $action)
     {
         $this->authorize('create', $post);
         $action->handle($post, $request);
@@ -40,7 +41,7 @@ class PostController extends Controller
         return view('post.edit', compact('post', 'categories'));
     }
 
-    public function update(Post $post, Request $request, PostUpdateAction $action)
+    public function update(Post $post, UpdateRequest $request, PostUpdateAction $action)
     {
         $this->authorize('update', $post);
         $action->handle($post, $request);
