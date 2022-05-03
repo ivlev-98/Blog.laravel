@@ -36,4 +36,11 @@ class Post extends Model
         return $this->likes()->allRelatedIds()->contains($userId);
     }
 
+    public function bookmarkedBy($userId)
+    {
+        return $this->belongsToMany(Post::class, 'bookmarks', 'post_id', 'user_id')
+                ->allRelatedIds()
+                ->contains($userId);
+    }
+
 }

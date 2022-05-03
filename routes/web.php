@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikePostController;
 use App\Http\Controllers\CommentLikeController;
-
+use App\Http\Controllers\BookmarkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,7 @@ Route::get('/category/{category}', CategoryController::class)->name('category.sh
 Route::resource('/post', PostController::class);
 Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('post.comment');
 Route::get('/post/{post}/like', LikePostController::class)->name('post.like');
+Route::get('post/{post}/bookmark', [BookmarkController::class, 'store'])->name('post.bookmark');
 Route::get('/comment/{comment}/like', CommentLikeController::class)->name('comment.like');
 Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.delete');
 Route::resource('/home', HomeController::class);

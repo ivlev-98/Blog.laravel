@@ -55,11 +55,13 @@
                         </button>
                     </form>
                 @endcan
-                <span class="action"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" width="1em" height="1em">
-                        <path d="M384 48V512l-192-112L0 512V48C0 21.5 21.5 0 48 0h288C362.5 0 384 21.5 384 48z"></path>
-                    </svg>0
-                </span>
+                @can('bookmark', $post)
+                    <a href="{{ route('post.bookmark', $post) }}" class="action @if($post->bookmarkedBy(auth()->user()->id)) selected @endif">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" width="1em" height="1em">
+                            <path d="M384 48V512l-192-112L0 512V48C0 21.5 21.5 0 48 0h288C362.5 0 384 21.5 384 48z"></path>
+                        </svg>
+                    </a>
+                @endcan
             </div>
         </div>
     </article>

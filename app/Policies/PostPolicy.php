@@ -35,4 +35,9 @@ class PostPolicy
     {
         return $user->id > 0;
     }
+
+    public function bookmark(User $user)
+    {
+        return $user->id > 0;
+    }
 }

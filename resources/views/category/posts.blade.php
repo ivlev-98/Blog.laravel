@@ -37,11 +37,15 @@
                                 <path d="M256 32C114.6 32 .0272 125.1 .0272 240c0 49.63 21.35 94.98 56.97 130.7c-12.5 50.37-54.27 95.27-54.77 95.77c-2.25 2.25-2.875 5.734-1.5 8.734C1.979 478.2 4.75 480 8 480c66.25 0 115.1-31.76 140.6-51.39C181.2 440.9 217.6 448 256 448c141.4 0 255.1-93.13 255.1-208S397.4 32 256 32z"></path>
                             </svg>{{ $post->comments_count }}</a>
                     </div>
-                    <div><span class="action"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" width="1em" height="1em">
-                          <path d="M384 48V512l-192-112L0 512V48C0 21.5 21.5 0 48 0h288C362.5 0 384 21.5 384 48z"></path>
-                        </svg>0</span>
-                    </div>
+                    @can('bookmark', $post)
+                        <div>
+                            <a href="{{ route('post.bookmark', $post) }}" class="action @if($post->bookmarkedBy(auth()->user()->id)) selected @endif">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" width="1em" height="1em">
+                                    <path d="M384 48V512l-192-112L0 512V48C0 21.5 21.5 0 48 0h288C362.5 0 384 21.5 384 48z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </article>
             @endforeach
