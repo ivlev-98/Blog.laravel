@@ -8,11 +8,15 @@ class CategoryController extends Controller
 {
     public function __invoke(Category $category)
     {
-        $categories = $category->all();
         $posts = $category->posts()
-                    ->withCount('comments')
-                    ->orderBy('created_at', 'desc')
+                    ->withCount([
+                        'likes',
+                        'comments',
+                        'isLiked as isLiked',
+                        'isBookmarked as isBookmarked'
+                    ])
+                    ->orderByDesc('created_at')
                     ->paginate(10);
-        return view('category.posts', compact('categories', 'posts'));
+        return view('category.posts', compact('posts'));
     }
 }

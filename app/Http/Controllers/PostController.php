@@ -8,7 +8,7 @@ use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\User;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -28,11 +28,16 @@ class PostController extends Controller
             ->with('success', 'Пост успешно создан');
     }
 
-    public function show(Post $post)
+    public function show(int $postId)
     {
+        $post = Post::withCount([
+                        'likes',
+                        'comments',
+                        'isLiked as isLiked',
+                        'isBookmarked as isBookmarked'
+                    ])->find($postId);
         $post->views++;
         $post->save();
-        $post = $post::withCount('comments')->find($post->id);
         $post->comments = $post->comments()->paginate(10);
         return view('post.show', compact('post'));
     }

@@ -8,10 +8,12 @@ class IndexController extends Controller
 {
     public function __invoke(Post $post, Category $category)
     {
-        $posts = $post->withCount('comments')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
-        $categories = $category->all();
-        return view('index', compact('posts', 'categories'));
+        $posts = $post->withCount([
+            'likes',
+            'comments',
+            'isLiked as isLiked',
+            'isBookmarked as isBookmarked'
+        ])->orderByDesc('created_at')->paginate(10);
+        return view('index', compact('posts'));
     }
 }

@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $with = [
+        'user'
+    ];
 
     protected $withCount = [
-        'likes'
+        'likes',
+        'isLiked as isLiked'
     ];
 
     protected $fillable = [
@@ -36,8 +40,9 @@ class Comment extends Model
         return $this->belongsToMany(User::class, 'comment_user_likes', 'comment_id', 'user_id');
     }
 
-    public function likedBy($userId)
+    public function isLiked()
     {
-        return $this->likes()->allRelatedIds()->contains($userId);
+        return $this->likes()
+                    ->wherePivot('user_id', '=', auth()->user()->id ?? 0);
     }
 }

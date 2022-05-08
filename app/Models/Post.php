@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    protected $withCount = [
-        'likes'
-    ];
-
     use HasFactory;
 
     public function category()
@@ -31,16 +27,21 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
     }
 
-    public function likedBy($userId)
+    public function bookmarks()
     {
-        return $this->likes()->allRelatedIds()->contains($userId);
+        return $this->belongsToMany(Post::class, 'bookmarks', 'post_id', 'user_id');
     }
 
-    public function bookmarkedBy($userId)
+    public function isLiked()
     {
-        return $this->belongsToMany(Post::class, 'bookmarks', 'post_id', 'user_id')
-                ->allRelatedIds()
-                ->contains($userId);
+        return $this->likes()
+                    ->wherePivot('user_id', '=', auth()->user()->id ?? 0);
+    }
+
+    public function isBookmarked()
+    {
+        return $this->belongsToMany(User::class, 'bookmarks', 'post_id', 'user_id')
+                    ->wherePivot('user_id', '=', auth()->user()->id ?? 0);
     }
 
 }
