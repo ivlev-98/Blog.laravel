@@ -22,6 +22,9 @@
     <nav class="site-header__nav">
         @auth
             <a href="{{ route('home.index') }}">Личный кабинет</a>
+            @can('viewAny', App\Models\Category::class)
+                <a href="{{ route('category.index') }}">Категории</a>
+            @endcan
             <a href="{{ route('post.create') }}">Создать пост</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

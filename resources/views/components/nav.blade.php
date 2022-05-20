@@ -10,6 +10,9 @@
         </header>
         <div class="right-nav__mobile-links">
             <a href="{{ route('home.index') }}">Личный кабинет</a>
+            @can('viewAny', App\Models\Category::class)
+                <a href="{{ route('category.index') }}">Категории</a>
+            @endcan
             <a href="create-post.html">Создать пост</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

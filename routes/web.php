@@ -21,7 +21,19 @@ use App\Http\Controllers\BookmarkController;
 */
 
 Route::get('/', IndexController::class)->name('index');
-Route::get('/category/{category}', CategoryController::class)->name('category.show');
+Route::get('/categories',[CategoryController::class, 'index'])->name('category.index');
+Route::group([
+    'prefix' => '/category',
+    'as' => 'category.',
+    'controller' => CategoryController::class
+    ], function() {
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::delete('/{category}/delete', 'destroy')->name('delete');
+        Route::get('/{category}/edit', 'edit')->name('edit');
+        Route::patch('/{category}/update', 'update')->name('update');
+        Route::get('/{category}', 'show')->name('show');
+});
 Route::resource('/post', PostController::class);
 Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('post.comment');
 Route::get('/post/{post}/like', LikePostController::class)->name('post.like');
