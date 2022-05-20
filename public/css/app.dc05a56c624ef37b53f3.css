@@ -553,28 +553,49 @@ a {
 .post__controls svg {
   font-size: 1.35em;
 }
+.post__controls form {
+  display: flex;
+  align-items: center;
+}
 .post__controls span,
-.post__controls a {
+.post__controls a,
+.post__controls button {
   display: flex;
   align-items: center;
   gap: 5px;
   color: #abafa2;
   font-size: 16px;
 }
+.post__controls button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .post__controls span.action {
   cursor: pointer;
 }
+.post__controls span {
+  padding: 0;
+}
 .post__controls a,
-.post__controls span.action {
+.post__controls span.action,
+.post__controls button {
   transition: 0.5s;
   padding: 0;
 }
 .post__controls a:hover,
-.post__controls span.action:hover {
+.post__controls span.action:hover,
+.post__controls button:hover {
   color: #157575;
 }
+.post__controls a.danger:hover,
+.post__controls span.action.danger:hover,
+.post__controls button.danger:hover {
+  color: #da504b;
+}
 .post__controls a.selected,
-.post__controls span.action.selected {
+.post__controls span.action.selected,
+.post__controls button.selected {
   color: #157575;
 }
 #comments {
@@ -660,9 +681,10 @@ a {
   align-items: center;
   gap: 5px;
   transition: 0.5s;
+  color: #abafa2;
   cursor: pointer;
 }
-.comment .action > span {
+.comment .action span {
   font-size: 14px;
 }
 .comment .action:hover {
@@ -670,6 +692,11 @@ a {
 }
 .comment .action.selected {
   color: #157575;
+}
+.comment button.action {
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 .auth-reg {
   background: #fff;
@@ -1062,6 +1089,73 @@ a {
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
 }
+.list__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.list__item {
+  display: flex;
+  height: 60px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #ead7c7;
+  align-items: center;
+  justify-content: space-between;
+}
+.list__item h4 {
+  margin: 0 0 0 20px;
+}
+.list .stat {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 20px;
+}
+.list .stat span {
+  display: flex;
+  gap: 5px;
+}
+.list .actions {
+  display: flex;
+  justify-content: space-between;
+}
+.list .count {
+  color: #157575;
+  font-size: 1.1em;
+}
+.list .actions form {
+  display: flex;
+  align-items: center;
+}
+.list .actions a,
+.list .actions button {
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  height: 60px;
+  padding: 0 10px;
+  border: none;
+  background: none;
+  transition: 0.5s;
+  color: #fff;
+  background: #157575;
+}
+.list .actions a:hover,
+.list .actions button:hover {
+  background: #106060;
+}
+.list .actions a.danger,
+.list .actions button.danger {
+  background: #da504b;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0;
+}
+.list .actions a.danger:hover,
+.list .actions button.danger:hover {
+  background: #b1322e;
+}
 @media (max-width: 1115px) {
   .container {
     margin: 30px 50px;
@@ -1156,7 +1250,8 @@ a {
     gap: 10px;
   }
   .post__controls span,
-  .post__controls a {
+  .post__controls a,
+  .post__controls button {
     font-size: 14px;
   }
   .post__comments-form {
@@ -1185,6 +1280,36 @@ a {
   }
   .home__avatar img {
     width: 100%;
+  }
+  .list__item {
+    flex-direction: column;
+    height: 150px;
+    padding-top: 20px;
+  }
+  .list .stat {
+    flex-direction: column;
+  }
+  .list .actions {
+    width: 100%;
+  }
+  .list .actions form {
+    flex-grow: 1;
+  }
+  .list .actions a,
+  .list .actions button {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  .list .actions a.danger,
+  .list .actions button.danger {
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+  }
+  .list .actions a,
+  .list .actions button {
+    flex-grow: 1;
+    justify-content: center;
+    height: 45px;
   }
 }
 
